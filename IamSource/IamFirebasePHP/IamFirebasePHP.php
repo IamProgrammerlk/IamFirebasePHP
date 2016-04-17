@@ -2,8 +2,8 @@
 
 namespace IamProgrammerlk\IamFirebasePHP;
 
-use IamProgrammerlk\IamFirebasePHP\IamFirebasePHPClient;
-use IamProgrammerlk\IamFirebasePHP\IamFirebasePHPExceptions;
+use IamProgrammerlk\IamFirebasePHP\IamFirebasePHPNodes\IamFirebasePHPNode;
+use IamProgrammerlk\IamFirebasePHP\IamFirebasePHPExceptions\IamFirebasePHPException;
 
 class IamFirebasePHP
 {
@@ -12,9 +12,11 @@ class IamFirebasePHP
 	
     const IAM_FIREBASE_SECRET = 'FIREBASE_SECRET';
 	
-    const IAM_DEFAULT_TIMEOUT = 10;
+    const IAM_DEFAULT_TIMEOUT = 60;
 	
-	const IAM_DEFAULT_RESPONSE_HANDLER = 'IamResponseHandler';
+	const IAM_DEFAULT_RESPONSE_HANDLER = 'json';
+	
+	const IAM_DEFAULT_HTTP_CLIENT = '';
 	
 	const IAM_DEFAULT_NODE_PATH = '/';
     
