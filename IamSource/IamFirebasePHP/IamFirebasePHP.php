@@ -8,33 +8,30 @@ use IamProgrammerlk\IamFirebasePHP\IamFirebasePHPExceptions\IamFirebasePHPExcept
 class IamFirebasePHP
 {
 	
-    const IAM_FIREBASE_URL = 'FIREBASE_URL';
+	const IAM_FIREBASE_URL = 'FIREBASE_URL';
 	
     const IAM_FIREBASE_SECRET = 'FIREBASE_SECRET';
 	
     const IAM_DEFAULT_TIMEOUT = 60;
 	
-	const IAM_DEFAULT_RESPONSE_HANDLER = 'json';
-	
-	const IAM_DEFAULT_HTTP_CLIENT = '';
+	const IAM_DEFAULT_HTTP_CLIENT = 'HTTP_STREAM';
 	
 	const IAM_DEFAULT_NODE_PATH = '/';
-    
+	
+    public $IamNode;   
 
 	protected $IamConfig;
 	
 	
-    public $IamNode;
-
 	public function IamSetTimeout($IamTimeout)
 	{
 		$this->IamConfig['IamResponseTimeout'] = $IamTimeout;
 		$this->IamInit();
 	}
 	
-	public function IamSetResponseHandler($IamResponseHandler)
+	public function IamSetHttpClient($IamHttpClient)
 	{
-		$this->IamConfig['IamResponseHandler'] = $IamResponseHandler;
+		$this->IamConfig['IamResponseHandler'] = $IamHttpClient;
 		$this->IamInit();
 	}
 	
@@ -72,7 +69,7 @@ class IamFirebasePHP
 		$IamConfig = array_merge(
 		[ // this eliment's value can be replaced by new value by IamInit()
 			'IamResponseTimeout' => $this->IamConfig['IamResponseTimeout'],
-            'IamResponseHandler' => $this->IamConfig['IamResponseHandler'],
+            'IamHttpClient' => $this->IamConfig['IamHttpClient'],
 			'IamNodePath' => $this->IamConfig['IamNodePath'],
 		],
 		$IamConfig,
@@ -91,37 +88,77 @@ class IamFirebasePHP
             'IamFirebaseUrl' => getenv(static::IAM_FIREBASE_URL),
             'IamFirebaseSecret' => getenv(static::IAM_FIREBASE_SECRET),
             'IamResponseTimeout' => static::IAM_DEFAULT_TIMEOUT,
-            'IamResponseHandler' => static::IAM_DEFAULT_RESPONSE_HANDLER,
+            'IamHttpClient' => static::IAM_DEFAULT_HTTP_CLIENT,
 			'IamNodePath' => static::IAM_DEFAULT_NODE_PATH,
         ], $IamConfig);
-			
-        if (!$IamConfig['IamFirebaseUrl']) {
-            throw new IamFirebasePHPExceptions('Required "IamFirebaseUrl" key not supplied in config and could not find fallback environment variable "' . static::IAM_FIREBASE_URL . '"');
-        }
-		$this->IamConfig['IamFirebaseUrl'] = $IamConfig['IamFirebaseUrl'];
 		
-        if (!$IamConfig['IamFirebaseSecret']) {
-            throw new IamFirebasePHPExceptions('Required "IamFirebaseSecret" key not supplied in config and could not find fallback environment variable "' . static::IAM_FIREBASE_SECRET . '"');
-        }
-		$this->IamConfig['IamFirebaseSecret'] = $IamConfig['IamFirebaseSecret'];
-	
-		if (!true){
-			
-		}
-		$this->IamConfig['IamResponseTimeout'] = $IamConfig['IamResponseTimeout'];
-	
-		if (!true){
-			
-		}
-		$this->IamConfig['IamResponseHandler'] = $IamConfig['IamResponseHandler'];
+		$this->IamFirebaseUrlVerifier($IamConfig['IamFirebaseUrl']);
 		
-		if (!true){
+		$this->IamFirebaseSecretVerifier($IamConfig['IamFirebaseSecret']);
 			
-		}
-		$this->IamConfig['IamNodePath'] = $IamConfig['IamNodePath'];
+		$this->IamResponseTimeoutVerifier($IamConfig['IamResponseTimeout']);
+		
+		$this->IamHttpClientVerifier($IamConfig['IamHttpClient']);
+		
+		$this->IamNodePathVerifier($IamConfig['IamNodePath']);
 		
 		$this->IamInit();
 		
     }
+	
+	protected function IamFirebaseUrlVerifier($IamFirebaseUrl)
+	{
+		if (!$IamFirebaseUrl) {
+            throw new IamFirebasePHPException('Required "IamFirebaseUrl" key not supplied in config and could not find fallback environment variable "' . static::IAM_FIREBASE_URL . '"');
+        }
+		
+//TODO: validate firebase url is valid 
+
+		$this->IamConfig['IamFirebaseUrl'] = $IamFirebaseUrl;
+	}
+
+	protected function IamFirebaseSecretVerifier($IamFirebaseSecret)
+	{
+        if (!$IamFirebaseSecret) {
+            throw new IamFirebasePHPException('Required "IamFirebaseSecret" key not supplied in config and could not find fallback environment variable "' . static::IAM_FIREBASE_SECRET . '"');
+        }
+		
+//TODO: validate firebase secret is valid 
+				
+		$this->IamConfig['IamFirebaseSecret'] = $IamFirebaseSecret;
+	}
+	
+	protected function IamResponseTimeoutVerifier($IamResponseTimeout)
+	{
+		
+//TODO: validate response timeout is valid 
+
+		if (!true){
+			
+		}
+		$this->IamConfig['IamResponseTimeout'] = $IamResponseTimeout;
+	}
+	
+	protected function IamHttpClientVerifier($IamHttpClient)
+	{
+		
+//TODO: validate http client is valid 
+
+		if (!true){
+			
+		}
+		$this->IamConfig['IamHttpClient'] = $IamHttpClient;
+	}
+	
+	protected function IamNodePathVerifier($IamNodePath)
+	{
+		
+//TODO: validate note path is valid 
+
+		if (!true){
+			
+		}
+		$this->IamConfig['IamNodePath'] = $IamNodePath;
+	}
 	
 }
