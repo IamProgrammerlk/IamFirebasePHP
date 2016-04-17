@@ -1,9 +1,9 @@
 {
     "name": "iamprogrammerlk/iamfirebasephp",
-    "description": "IamFirebasePHP is an open-source library (REST API) for PHP run-time that allows you to quickly connect to the Firebase database for data storage. IamFirebasePHP API allowing you to be updated in realtime as data changes and no additional extensions are required.",
+    "description": "IamFirebasePHP is an open-source library (REST API) for PHP run-time that allows you to connect quickly to the Firebase database for data storage. IamFirebasePHP API allowing you to be updated in realtime as data changes and no additional extensions are required.",
     "keywords": ["firebase", "api", "sdk", "php", "iamprogrammerlk", "iamfirebasephp"],
     "type": "library",
-    "homepage": "https://github.com/iamprogrammerlk/iamfirebasephp",
+    "homepage": "https://iamprogrammerlk.blogspot.com/p/iamfirebasephp.html",
     "license": "MIT",
     "authors": [
         {
